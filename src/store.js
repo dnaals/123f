@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const request = axios.create({
     baseURL:process.env.REACT_APP_baseURL,
-    timeout:1000
+    timeout:5000
 });
 
 export const useStore = create((set)=>{
@@ -18,7 +18,7 @@ export const useStore = create((set)=>{
                 case 'get': 
                     d = await request.get('/'); break;
                 case 'post': 
-                    d = await request.post('/',info); break;
+                    d = await request.post('/',{...info}); break;
                 case 'put': 
                     d = await request.put('/', info); break;
                 default :
